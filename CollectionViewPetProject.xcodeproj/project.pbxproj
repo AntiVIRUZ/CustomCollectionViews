@@ -14,6 +14,7 @@
 		FFFD94B31C47EF45009EDFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFFD94B11C47EF45009EDFBB /* Main.storyboard */; };
 		FFFD94B51C47EF45009EDFBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFD94B41C47EF45009EDFBB /* Assets.xcassets */; };
 		FFFD94B81C47EF45009EDFBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFFD94B61C47EF45009EDFBB /* LaunchScreen.storyboard */; };
+		FFFD94C51C481465009EDFBB /* ColumnsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94C41C481465009EDFBB /* ColumnsCollectionViewLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		FFFD94B41C47EF45009EDFBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFFD94B71C47EF45009EDFBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFFD94B91C47EF45009EDFBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFFD94C31C481465009EDFBB /* ColumnsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnsCollectionViewLayout.h; sourceTree = "<group>"; };
+		FFFD94C41C481465009EDFBB /* ColumnsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnsCollectionViewLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +93,10 @@
 		FFFD94BF1C480705009EDFBB /* ColumnsCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				FFFD94C61C482020009EDFBB /* ColumnsCollectionViewDataSource */,
+				FFFD94C21C4813CC009EDFBB /* ColumnsCollectionViewLayout */,
 			);
-			name = ColumnsCollectionView;
+			path = ColumnsCollectionView;
 			sourceTree = "<group>";
 		};
 		FFFD94C01C48071C009EDFBB /* GalleryCollectionView */ = {
@@ -106,6 +111,22 @@
 			children = (
 			);
 			name = TabsCollectionView;
+			sourceTree = "<group>";
+		};
+		FFFD94C21C4813CC009EDFBB /* ColumnsCollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				FFFD94C31C481465009EDFBB /* ColumnsCollectionViewLayout.h */,
+				FFFD94C41C481465009EDFBB /* ColumnsCollectionViewLayout.m */,
+			);
+			path = ColumnsCollectionViewLayout;
+			sourceTree = "<group>";
+		};
+		FFFD94C61C482020009EDFBB /* ColumnsCollectionViewDataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ColumnsCollectionViewDataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFFD94B01C47EF45009EDFBB /* SecondViewController.m in Sources */,
+				FFFD94C51C481465009EDFBB /* ColumnsCollectionViewLayout.m in Sources */,
 				FFFD94AA1C47EF45009EDFBB /* AppDelegate.m in Sources */,
 				FFFD94AD1C47EF45009EDFBB /* FirstViewController.m in Sources */,
 				FFFD94A71C47EF45009EDFBB /* main.m in Sources */,
@@ -330,6 +352,7 @@
 				FFFD94BE1C47EF45009EDFBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
