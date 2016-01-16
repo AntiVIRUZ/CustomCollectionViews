@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF98BBAF1C4A66B700E237D8 /* CollumnCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98BBAE1C4A66B700E237D8 /* CollumnCollectionViewItem.m */; };
 		FFFD94A71C47EF45009EDFBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94A61C47EF45009EDFBB /* main.m */; };
 		FFFD94AA1C47EF45009EDFBB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94A91C47EF45009EDFBB /* AppDelegate.m */; };
 		FFFD94AD1C47EF45009EDFBB /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94AC1C47EF45009EDFBB /* FirstViewController.m */; };
@@ -15,9 +16,13 @@
 		FFFD94B51C47EF45009EDFBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFFD94B41C47EF45009EDFBB /* Assets.xcassets */; };
 		FFFD94B81C47EF45009EDFBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFFD94B61C47EF45009EDFBB /* LaunchScreen.storyboard */; };
 		FFFD94C51C481465009EDFBB /* ColumnsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94C41C481465009EDFBB /* ColumnsCollectionViewLayout.m */; };
+		FFFD94C91C48212C009EDFBB /* ColumnsCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94C81C48212C009EDFBB /* ColumnsCollectionViewDataSource.m */; };
+		FFFD94CD1C482595009EDFBB /* ColumnsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94CC1C482595009EDFBB /* ColumnsCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF98BBAD1C4A66B700E237D8 /* CollumnCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollumnCollectionViewItem.h; sourceTree = "<group>"; };
+		FF98BBAE1C4A66B700E237D8 /* CollumnCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollumnCollectionViewItem.m; sourceTree = "<group>"; };
 		FFFD94A21C47EF45009EDFBB /* CollectionViewPetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewPetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFD94A61C47EF45009EDFBB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFFD94A81C47EF45009EDFBB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -32,6 +37,10 @@
 		FFFD94B91C47EF45009EDFBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFFD94C31C481465009EDFBB /* ColumnsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnsCollectionViewLayout.h; sourceTree = "<group>"; };
 		FFFD94C41C481465009EDFBB /* ColumnsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnsCollectionViewLayout.m; sourceTree = "<group>"; };
+		FFFD94C71C48212C009EDFBB /* ColumnsCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnsCollectionViewDataSource.h; sourceTree = "<group>"; };
+		FFFD94C81C48212C009EDFBB /* ColumnsCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnsCollectionViewDataSource.m; sourceTree = "<group>"; };
+		FFFD94CB1C482595009EDFBB /* ColumnsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnsCollectionViewCell.h; sourceTree = "<group>"; };
+		FFFD94CC1C482595009EDFBB /* ColumnsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnsCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF98BBAC1C4A669300E237D8 /* CollumnCollectionViewItem */ = {
+			isa = PBXGroup;
+			children = (
+				FF98BBAD1C4A66B700E237D8 /* CollumnCollectionViewItem.h */,
+				FF98BBAE1C4A66B700E237D8 /* CollumnCollectionViewItem.m */,
+			);
+			path = CollumnCollectionViewItem;
+			sourceTree = "<group>";
+		};
 		FFFD94991C47EF45009EDFBB = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +111,8 @@
 		FFFD94BF1C480705009EDFBB /* ColumnsCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				FF98BBAC1C4A669300E237D8 /* CollumnCollectionViewItem */,
+				FFFD94CA1C48252A009EDFBB /* ColumnsCollectionViewCell */,
 				FFFD94C61C482020009EDFBB /* ColumnsCollectionViewDataSource */,
 				FFFD94C21C4813CC009EDFBB /* ColumnsCollectionViewLayout */,
 			);
@@ -125,8 +145,19 @@
 		FFFD94C61C482020009EDFBB /* ColumnsCollectionViewDataSource */ = {
 			isa = PBXGroup;
 			children = (
+				FFFD94C71C48212C009EDFBB /* ColumnsCollectionViewDataSource.h */,
+				FFFD94C81C48212C009EDFBB /* ColumnsCollectionViewDataSource.m */,
 			);
-			name = ColumnsCollectionViewDataSource;
+			path = ColumnsCollectionViewDataSource;
+			sourceTree = "<group>";
+		};
+		FFFD94CA1C48252A009EDFBB /* ColumnsCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FFFD94CB1C482595009EDFBB /* ColumnsCollectionViewCell.h */,
+				FFFD94CC1C482595009EDFBB /* ColumnsCollectionViewCell.m */,
+			);
+			path = ColumnsCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,10 +230,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFFD94CD1C482595009EDFBB /* ColumnsCollectionViewCell.m in Sources */,
 				FFFD94B01C47EF45009EDFBB /* SecondViewController.m in Sources */,
+				FFFD94C91C48212C009EDFBB /* ColumnsCollectionViewDataSource.m in Sources */,
 				FFFD94C51C481465009EDFBB /* ColumnsCollectionViewLayout.m in Sources */,
 				FFFD94AA1C47EF45009EDFBB /* AppDelegate.m in Sources */,
 				FFFD94AD1C47EF45009EDFBB /* FirstViewController.m in Sources */,
+				FF98BBAF1C4A66B700E237D8 /* CollumnCollectionViewItem.m in Sources */,
 				FFFD94A71C47EF45009EDFBB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

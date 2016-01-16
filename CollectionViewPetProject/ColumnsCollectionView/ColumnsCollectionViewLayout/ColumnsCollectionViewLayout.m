@@ -7,6 +7,8 @@
 //
 
 #import "ColumnsCollectionViewLayout.h"
+#import "ColumnsCollectionViewDataSource.h"
+#import "ColumnsCollectionViewCell.h"
 
 @implementation ColumnsCollectionViewLayout
 
@@ -34,18 +36,24 @@
     // in rect.
     NSArray *visibleIndexPaths = [self indexPathsOfItemsInRect:rect];
     for (NSIndexPath *indexPath in visibleIndexPaths) {
-        UICollectionViewLayoutAttributes *attributes =
-        [self layoutAttributesForItemAtIndexPath:indexPath];
+        UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
         [layoutAttributes addObject:attributes];
     }
     
     return layoutAttributes;
 }
 
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ColumnsCollectionViewDataSource *dataSource = self.collectionView.dataSource;
+    UICollectionViewLayoutAttributes *attributes =
+    [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    return attributes;
+}
+
 #pragma mark - private
 
 - (NSArray *)indexPathsOfItemsInRect:(CGRect)rect {
-    
+    return nil;
 }
 
 - (CGFloat)calculateContentHeight {
