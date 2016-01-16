@@ -10,6 +10,8 @@
 
 #import "CollumnCollectionViewItem.h"
 
+const NSInteger kColumnCellOffset = 8;
+
 @interface ColumnsCollectionViewDataSource ()
 
 @property (nonatomic, strong) NSArray *items;
@@ -38,8 +40,35 @@
     return nil;
 }
 
-- (void)configureItemsWithColumnsCount:(NSInteger)count width:(NSInteger)width {
-    
+- (void)configureItemsWithColumnsCount:(NSInteger)count columnWidth:(CGFloat)width {
+    if (width == 1) {
+        [self configureItemsForSingleColumnWithWidth:width];
+        return;
+    }
+    if (width < 1) {
+        return;
+    }
+}
+
+- (void)configureItemsForSingleColumnWithWidth:(CGFloat)width {
+    int i = 0;
+    for (CollumnCollectionViewItem *item in self.items) {
+        item.height = [self heightWithWidth:width image:item.image text:item.text];
+        item.indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+        i++;
+    }
+}
+
+- (CGFloat)heightWithWidth:(CGFloat)width image:(UIImage *)image text:(NSString *)text {
+    NSInteger contentWidth = width - kColumnCellOffset * 4;
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:9.0] };
+    CGRect textSize = [text boundingRectWithSize:CGSizeMake(contentWidth, MAXFLOAT)
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:attributes
+                                              context:nil];
+    CGFloat scaleFactor = contentWidth / image.size.width;
+    CGFloat imageHeight = image.size.height * scaleFactor;
+    return textSize.size.height + imageHeight + kColumnCellOffset * 3;
 }
 
 - (void)itemsInit {

@@ -10,6 +10,6 @@
 
 @interface ColumnsCollectionViewDataSource : NSObject <UICollectionViewDataSource>
 
-- (void)configureItemsWithColumnsCount:(NSInteger)count width:(NSInteger)width;
+- (void)configureItemsWithColumnsCount:(NSInteger)count columnWidth:(CGFloat)width;
 
 @end
