@@ -80,6 +80,14 @@ const CGFloat kMinCellOffset = 8.0;
     return attributes;
 }
 
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+    CGRect oldBounds = self.collectionView.bounds;
+    if (CGRectGetWidth(newBounds) != CGRectGetWidth(oldBounds)) {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark - private
 
 - (NSArray *)indexPathsOfItemsInRect:(CGRect)rect {
