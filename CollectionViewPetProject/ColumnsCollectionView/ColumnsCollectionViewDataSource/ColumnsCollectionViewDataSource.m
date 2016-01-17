@@ -48,6 +48,34 @@ const NSInteger kColumnCellOffset = 8;
     if (width < 1) {
         return;
     }
+    NSMutableArray *heights = [NSMutableArray arrayWithCapacity:count];
+    NSMutableArray *counts = [NSMutableArray arrayWithCapacity:count];
+    for (int i = 0; i < count; i++) {
+        [heights addObject:[NSNumber numberWithFloat:0.0]];
+        [counts addObject:[NSNumber numberWithInteger:0]];
+    }
+    NSInteger min = 0;
+    for (CollumnCollectionViewItem *item in self.items) {
+        item.height = [self heightWithWidth:width image:item.image text:item.text];
+        NSInteger count = [[counts objectAtIndex:min]integerValue];
+        item.indexPath = [NSIndexPath indexPathForItem:count inSection:min];
+        [counts setObject:[NSNumber numberWithInteger:count + 1] atIndexedSubscript:min];
+        NSInteger newHeight = [[heights objectAtIndex:min] floatValue] + item.height + kColumnCellOffset;
+        [heights setObject:[NSNumber numberWithFloat:newHeight] atIndexedSubscript:min];
+        min = [self findMin:heights];
+    }
+}
+
+- (NSInteger)findMin:(NSArray *)array {
+    NSInteger min = 0;
+    CGFloat minIndex = [[array objectAtIndex:0] floatValue];
+    for (int i = 1; i < array.count; i++) {
+        if ([[array objectAtIndex:i] floatValue] < minIndex) {
+            minIndex = [[array objectAtIndex:i] floatValue];
+            min = i;
+        }
+    }
+    return min;
 }
 
 - (void)configureItemsForSingleColumnWithWidth:(CGFloat)width {
