@@ -9,12 +9,15 @@
 #import "ColumnsCollectionViewDataSource.h"
 
 #import "CollumnCollectionViewItem.h"
+#import "ColumnsCollectionViewCell.h"
 
 const NSInteger kColumnCellOffset = 8;
+const NSInteger kItemsCount = 50;
 
 @interface ColumnsCollectionViewDataSource ()
 
 @property (nonatomic, strong) NSArray *items;
+@property (nonatomic) NSInteger sectionCount;
 
 @end
 
@@ -23,31 +26,52 @@ const NSInteger kColumnCellOffset = 8;
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.sectionCount = 1;
         [self itemsInit];
     }
     return self;
 }
 
+#pragma mark - Collection View Data Sourse
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return 100;
+    return kItemsCount;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    ColumnsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"colCell" forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[ColumnsCollectionViewCell alloc] init];
+    }
+    CollumnCollectionViewItem *item = [self itemAtIndexPath:indexPath];
+    if (item) {
+        [cell setImage:item.image andText:item.text];
+    } else {
+        [cell setImage:nil andText:@"Ошибка! Не найден item"];
+    }
+    return cell;
 }
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return self.sectionCount;
+}
+
+#pragma  mark - Public
 
 - (void)configureItemsWithColumnsCount:(NSInteger)count columnWidth:(CGFloat)width {
     if (width == 1) {
+        self.sectionCount = 1;
         [self configureItemsForSingleColumnWithWidth:width];
         return;
     }
     if (width < 1) {
         return;
     }
+    self.sectionCount = width;
     NSMutableArray *heights = [NSMutableArray arrayWithCapacity:count];
     NSMutableArray *counts = [NSMutableArray arrayWithCapacity:count];
     for (int i = 0; i < count; i++) {
@@ -64,6 +88,17 @@ const NSInteger kColumnCellOffset = 8;
         [heights setObject:[NSNumber numberWithFloat:newHeight] atIndexedSubscript:min];
         min = [self findMin:heights];
     }
+}
+
+#pragma mark - Private
+
+- (CollumnCollectionViewItem *)itemAtIndexPath:(NSIndexPath *)indexPath {
+    for (CollumnCollectionViewItem *item in self.items) {
+        if ([item.indexPath isEqual:indexPath]) {
+            return item;
+        }
+    }
+    return nil;
 }
 
 - (NSInteger)findMin:(NSArray *)array {
@@ -89,7 +124,7 @@ const NSInteger kColumnCellOffset = 8;
 
 - (CGFloat)heightWithWidth:(CGFloat)width image:(UIImage *)image text:(NSString *)text {
     NSInteger contentWidth = width - kColumnCellOffset * 4;
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:9.0] };
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0] };
     CGRect textSize = [text boundingRectWithSize:CGSizeMake(contentWidth, MAXFLOAT)
                                               options:NSStringDrawingUsesLineFragmentOrigin
                                            attributes:attributes
@@ -115,7 +150,7 @@ const NSInteger kColumnCellOffset = 8;
       [UIImage imageWithContentsOfFile:@"square"]
       ];
     NSMutableArray *items = [NSMutableArray array];
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < kItemsCount; i++) {
         NSUInteger rs = arc4random_uniform((u_int32_t)[rawTextArray count]);
         NSString *s = [rawTextArray objectAtIndex:rs];
         NSUInteger ri = arc4random_uniform((u_int32_t)[rawImageArray count]);
