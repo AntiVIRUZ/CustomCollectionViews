@@ -11,16 +11,35 @@
 #import "ColumnsCollectionViewCell.h"
 #import "ColumnsCollectionViewItem.h"
 
+const CGFloat kMaxCellWidth = 220.0;
+const CGFloat kMinCellOffset = 8.0;
+
 @interface ColumnsCollectionViewLayout ()
 
 @property (nonatomic) CGFloat colWidth;
 @property (nonatomic) CGFloat colXOffset;
+@property (nonatomic) NSInteger colCount;
 
 @end
 
 @implementation ColumnsCollectionViewLayout
 
 #pragma mark - Layout
+
+- (void)prepareLayout {
+    //All calculations becomes from 'width = count * colWodth + (count + 1) * colOffset'
+    CGFloat width = self.collectionView.bounds.size.width;
+    self.colCount = (NSInteger)(width - kMinCellOffset) / (kMaxCellWidth + kMinCellOffset);
+    self.colWidth = (width - (self.colCount + 1) * kMinCellOffset) / self.colCount;
+    if (self.colWidth - 1E-9 > kMaxCellWidth) {
+        self.colWidth = kMaxCellWidth;
+        self.colXOffset = (width - self.colCount * self.colWidth) / (self.colCount + 1);
+    } else {
+        self.colXOffset = kMinCellOffset;
+    }
+    ColumnsCollectionViewDataSource *dataSource = self.collectionView.dataSource;
+    [dataSource configureItemsWithColumnsCount:self.colCount columnWidth:self.colWidth];
+}
 
 - (CGSize)collectionViewContentSize
 {
@@ -64,6 +83,8 @@
 #pragma mark - private
 
 - (NSArray *)indexPathsOfItemsInRect:(CGRect)rect {
+    ColumnsCollectionViewDataSource *dataSource = self.collectionView.dataSource;
+    
     return nil;
 }
 
