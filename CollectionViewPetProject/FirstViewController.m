@@ -8,7 +8,12 @@
 
 #import "FirstViewController.h"
 
+#import "ColumnsCollectionViewDataSource.h"
+
 @interface FirstViewController ()
+
+@property (nonatomic, strong) ColumnsCollectionViewDataSource *dataSource;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -16,12 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.dataSource = [[ColumnsCollectionViewDataSource alloc] init];
+    self.collectionView.dataSource = self.dataSource;
 }
 
 @end

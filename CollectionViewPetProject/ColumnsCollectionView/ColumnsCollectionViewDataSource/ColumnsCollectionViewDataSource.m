@@ -39,7 +39,7 @@ const NSInteger kItemsCount = 50;
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return kItemsCount;
+    return [[self.indexPathsItems objectAtIndex:section] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -73,7 +73,7 @@ const NSInteger kItemsCount = 50;
     if (width < 1) {
         return;
     }
-    self.sectionCount = width;
+    self.sectionCount = count;
     NSMutableArray *offsets = [NSMutableArray arrayWithCapacity:count];
     NSMutableArray *heights = [NSMutableArray arrayWithCapacity:count];
     NSMutableArray *counts = [NSMutableArray arrayWithCapacity:count];
@@ -112,7 +112,10 @@ const NSInteger kItemsCount = 50;
 }
 
 - (ColumnsCollectionViewItem *)itemAtIndexPath:(NSIndexPath *)indexPath {
-    return [[self.indexPathsItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.item];
+    if (indexPath.section < self.sectionCount) {
+        return [[self.indexPathsItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.item];
+    }
+    return nil;
 }
 
 #pragma mark - Private
@@ -161,19 +164,17 @@ const NSInteger kItemsCount = 50;
       @"Но та схватила тряпочку и вытерла свое лицо, стирая макияж, под которым оказалось множество безобразных пурпурных родинок. Разумеется, молодой человек не бросил бы её, но он имел неосторожность издать вздох, увидев эти родинки.Невеста заплакала и убежала, не вернувшись к тому времени, когда медовый месяц должен был закончиться",
       @"У нее не было ни денег, ни паспорта, и испуганный молодой человек пошел в полицию. Там решили, что невеста просто передумала с браком, однако, она не умела говорить по-французски и у нее не было никаких документов, так что поиски начались. Но ничего не дали. Шли недели, месяцы, а молодой человек все никак не мог найти свою невесту. Его жизнь рухнула, ибо он был убит горем.Тогда он отправился бродить по миру, надеясь найти что-либо, способное смягчить его боль"
       ];
+    UIImage *first = [UIImage imageNamed:@"wide"];
+    UIImage *second = [UIImage imageNamed:@"tall"];
+    UIImage *third = [UIImage imageNamed:@"square"];
     
-    NSArray *rawImageArray =
-    @[
-      [UIImage imageWithContentsOfFile:@"wide"],
-      [UIImage imageWithContentsOfFile:@"tall"],
-      [UIImage imageWithContentsOfFile:@"square"]
-      ];
+    NSArray *rawImageArray = @[first, second, third];
     NSMutableArray *items = [NSMutableArray array];
     for (int i = 0; i < kItemsCount; i++) {
         NSUInteger rs = arc4random_uniform((u_int32_t)[rawTextArray count]);
         NSString *s = [rawTextArray objectAtIndex:rs];
         NSUInteger ri = arc4random_uniform((u_int32_t)[rawImageArray count]);
-        UIImage *i = [rawTextArray objectAtIndex:ri];
+        UIImage *i = [rawImageArray objectAtIndex:ri];
         ColumnsCollectionViewItem *item = [[ColumnsCollectionViewItem alloc] initWithText:s image:i];
         [items addObject:item];
     }

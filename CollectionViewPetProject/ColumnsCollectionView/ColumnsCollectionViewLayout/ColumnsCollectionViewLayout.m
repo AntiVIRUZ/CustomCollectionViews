@@ -11,6 +11,7 @@
 #import "ColumnsCollectionViewCell.h"
 #import "ColumnsCollectionViewItem.h"
 
+const CGFloat kMinCellWidth = 160.0;
 const CGFloat kMaxCellWidth = 220.0;
 const CGFloat kMinCellOffset = 8.0;
 
@@ -30,6 +31,9 @@ const CGFloat kMinCellOffset = 8.0;
     //All calculations becomes from 'width = count * colWodth + (count + 1) * colOffset'
     CGFloat width = self.collectionView.bounds.size.width;
     self.colCount = (NSInteger)(width - kMinCellOffset) / (kMaxCellWidth + kMinCellOffset);
+    if ((width - self.colCount * kMinCellOffset) / (self.colCount - 1) > kMinCellWidth) {
+        self.colCount++;
+    }
     self.colWidth = (width - (self.colCount + 1) * kMinCellOffset) / self.colCount;
     if (self.colWidth - 1E-9 > kMaxCellWidth) {
         self.colWidth = kMaxCellWidth;
@@ -93,14 +97,14 @@ const CGFloat kMinCellOffset = 8.0;
 - (NSArray *)indexPathsOfItemsInRect:(CGRect)rect {
     ColumnsCollectionViewDataSource *dataSource = self.collectionView.dataSource;
     NSInteger startSection = (NSInteger)(rect.origin.x / (self.colWidth + self.colXOffset));
-    NSInteger endSection = (NSInteger) ceil((rect.origin.x + rect.size.width) / (self.colWidth + self.colXOffset));
+    NSInteger endSection = MIN((NSInteger)ceil((rect.origin.x + rect.size.width - self.colXOffset) / (self.colWidth + self.colXOffset)), self.colCount - 1);
     NSMutableArray *indexes = [NSMutableArray array];
     for (NSInteger i = startSection; i <= endSection; i++) {
         NSInteger j = 0;
         while (true) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:j inSection:i];
             ColumnsCollectionViewItem *item = [dataSource itemAtIndexPath:indexPath];
-            if (item.y + item.height < rect.origin.y + rect.size.height) {
+            if (item.y < rect.origin.y + rect.size.height) {
                 [indexes addObject:indexPath];
                 j++;
             } else {
@@ -108,7 +112,7 @@ const CGFloat kMinCellOffset = 8.0;
             }
         }
     }
-    return nil;
+    return [NSArray arrayWithArray:indexes];
 }
 
 - (CGFloat)calculateContentHeight {
