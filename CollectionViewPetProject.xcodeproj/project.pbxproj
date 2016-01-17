@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF98BBAF1C4A66B700E237D8 /* CollumnCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98BBAE1C4A66B700E237D8 /* CollumnCollectionViewItem.m */; };
+		FF98BBAF1C4A66B700E237D8 /* ColumnsCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98BBAE1C4A66B700E237D8 /* ColumnsCollectionViewItem.m */; };
 		FFFD94A71C47EF45009EDFBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94A61C47EF45009EDFBB /* main.m */; };
 		FFFD94AA1C47EF45009EDFBB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94A91C47EF45009EDFBB /* AppDelegate.m */; };
 		FFFD94AD1C47EF45009EDFBB /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94AC1C47EF45009EDFBB /* FirstViewController.m */; };
@@ -21,8 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FF98BBAD1C4A66B700E237D8 /* CollumnCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollumnCollectionViewItem.h; sourceTree = "<group>"; };
-		FF98BBAE1C4A66B700E237D8 /* CollumnCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollumnCollectionViewItem.m; sourceTree = "<group>"; };
+		FF98BBAD1C4A66B700E237D8 /* ColumnsCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnsCollectionViewItem.h; sourceTree = "<group>"; };
+		FF98BBAE1C4A66B700E237D8 /* ColumnsCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnsCollectionViewItem.m; sourceTree = "<group>"; };
 		FFFD94A21C47EF45009EDFBB /* CollectionViewPetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewPetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFD94A61C47EF45009EDFBB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFFD94A81C47EF45009EDFBB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -57,8 +57,8 @@
 		FF98BBAC1C4A669300E237D8 /* CollumnCollectionViewItem */ = {
 			isa = PBXGroup;
 			children = (
-				FF98BBAD1C4A66B700E237D8 /* CollumnCollectionViewItem.h */,
-				FF98BBAE1C4A66B700E237D8 /* CollumnCollectionViewItem.m */,
+				FF98BBAD1C4A66B700E237D8 /* ColumnsCollectionViewItem.h */,
+				FF98BBAE1C4A66B700E237D8 /* ColumnsCollectionViewItem.m */,
 			);
 			path = CollumnCollectionViewItem;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 				FFFD94C51C481465009EDFBB /* ColumnsCollectionViewLayout.m in Sources */,
 				FFFD94AA1C47EF45009EDFBB /* AppDelegate.m in Sources */,
 				FFFD94AD1C47EF45009EDFBB /* FirstViewController.m in Sources */,
-				FF98BBAF1C4A66B700E237D8 /* CollumnCollectionViewItem.m in Sources */,
+				FF98BBAF1C4A66B700E237D8 /* ColumnsCollectionViewItem.m in Sources */,
 				FFFD94A71C47EF45009EDFBB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

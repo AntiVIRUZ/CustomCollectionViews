@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CollumnCollectionViewItem : NSObject
+@interface ColumnsCollectionViewItem : NSObject
 
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) CGFloat height;
+@property (nonatomic) CGFloat y;
 
 - (instancetype)initWithText:(NSString *)text image:(UIImage *)image;
 

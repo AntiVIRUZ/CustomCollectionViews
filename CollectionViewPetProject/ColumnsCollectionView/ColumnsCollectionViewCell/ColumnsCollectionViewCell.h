@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class ColumnsCollectionViewItem;
+
 @interface ColumnsCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, strong) ColumnsCollectionViewItem *item;
 
 - (void)setImage:(UIImage *)image andText:(NSString *)text;
 

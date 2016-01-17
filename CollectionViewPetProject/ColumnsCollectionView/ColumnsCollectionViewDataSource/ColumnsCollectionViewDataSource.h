@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class ColumnsCollectionViewItem;
+
 @interface ColumnsCollectionViewDataSource : NSObject <UICollectionViewDataSource>
 
 - (void)configureItemsWithColumnsCount:(NSInteger)count columnWidth:(CGFloat)width;
+- (ColumnsCollectionViewItem *)itemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

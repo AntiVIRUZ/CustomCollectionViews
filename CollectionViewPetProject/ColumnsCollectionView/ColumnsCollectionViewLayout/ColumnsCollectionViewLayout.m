@@ -9,6 +9,14 @@
 #import "ColumnsCollectionViewLayout.h"
 #import "ColumnsCollectionViewDataSource.h"
 #import "ColumnsCollectionViewCell.h"
+#import "ColumnsCollectionViewItem.h"
+
+@interface ColumnsCollectionViewLayout ()
+
+@property (nonatomic) CGFloat colWidth;
+@property (nonatomic) CGFloat colXOffset;
+
+@end
 
 @implementation ColumnsCollectionViewLayout
 
@@ -45,8 +53,11 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     ColumnsCollectionViewDataSource *dataSource = self.collectionView.dataSource;
+    ColumnsCollectionViewItem *item = [dataSource itemAtIndexPath:indexPath];
     UICollectionViewLayoutAttributes *attributes =
     [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    CGFloat x = (indexPath.section + 1) * self.colXOffset + indexPath.section * self.colWidth;
+    attributes.frame = CGRectMake(x, item.y, self.colWidth, item.height);
     return attributes;
 }
 

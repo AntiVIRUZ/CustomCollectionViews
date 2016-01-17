@@ -8,7 +8,7 @@
 
 #import "ColumnsCollectionViewDataSource.h"
 
-#import "CollumnCollectionViewItem.h"
+#import "ColumnsCollectionViewItem.h"
 #import "ColumnsCollectionViewCell.h"
 
 const NSInteger kColumnCellOffset = 8;
@@ -47,7 +47,7 @@ const NSInteger kItemsCount = 50;
     if (!cell) {
         cell = [[ColumnsCollectionViewCell alloc] init];
     }
-    CollumnCollectionViewItem *item = [self itemAtIndexPath:indexPath];
+    ColumnsCollectionViewItem *item = [self itemAtIndexPath:indexPath];
     if (item) {
         [cell setImage:item.image andText:item.text];
     } else {
@@ -72,34 +72,43 @@ const NSInteger kItemsCount = 50;
         return;
     }
     self.sectionCount = width;
+    NSMutableArray *offsets = [NSMutableArray arrayWithCapacity:count];
     NSMutableArray *heights = [NSMutableArray arrayWithCapacity:count];
     NSMutableArray *counts = [NSMutableArray arrayWithCapacity:count];
     for (int i = 0; i < count; i++) {
+        [offsets addObject:[NSNumber numberWithFloat:kColumnCellOffset]];
         [heights addObject:[NSNumber numberWithFloat:0.0]];
         [counts addObject:[NSNumber numberWithInteger:0]];
     }
     NSInteger min = 0;
-    for (CollumnCollectionViewItem *item in self.items) {
+    for (ColumnsCollectionViewItem *item in self.items) {
         item.height = [self heightWithWidth:width image:item.image text:item.text];
+        
+        item.y = [[offsets objectAtIndex:min] integerValue];
+        CGFloat newOffset = [[offsets objectAtIndex:min] floatValue];
+        newOffset += item.height + kColumnCellOffset;
+        [offsets setObject:[NSNumber numberWithFloat:newOffset] atIndexedSubscript:min];
+        
         NSInteger count = [[counts objectAtIndex:min]integerValue];
         item.indexPath = [NSIndexPath indexPathForItem:count inSection:min];
         [counts setObject:[NSNumber numberWithInteger:count + 1] atIndexedSubscript:min];
+        
         NSInteger newHeight = [[heights objectAtIndex:min] floatValue] + item.height + kColumnCellOffset;
         [heights setObject:[NSNumber numberWithFloat:newHeight] atIndexedSubscript:min];
         min = [self findMin:heights];
     }
 }
 
-#pragma mark - Private
-
-- (CollumnCollectionViewItem *)itemAtIndexPath:(NSIndexPath *)indexPath {
-    for (CollumnCollectionViewItem *item in self.items) {
+- (ColumnsCollectionViewItem *)itemAtIndexPath:(NSIndexPath *)indexPath {
+    for (ColumnsCollectionViewItem *item in self.items) {
         if ([item.indexPath isEqual:indexPath]) {
             return item;
         }
     }
     return nil;
 }
+
+#pragma mark - Private
 
 - (NSInteger)findMin:(NSArray *)array {
     NSInteger min = 0;
@@ -115,8 +124,11 @@ const NSInteger kItemsCount = 50;
 
 - (void)configureItemsForSingleColumnWithWidth:(CGFloat)width {
     int i = 0;
-    for (CollumnCollectionViewItem *item in self.items) {
+    CGFloat generalHeight = kColumnCellOffset;
+    for (ColumnsCollectionViewItem *item in self.items) {
+        item.y = generalHeight;
         item.height = [self heightWithWidth:width image:item.image text:item.text];
+        generalHeight += item.height + kColumnCellOffset;
         item.indexPath = [NSIndexPath indexPathForItem:i inSection:0];
         i++;
     }
@@ -155,7 +167,7 @@ const NSInteger kItemsCount = 50;
         NSString *s = [rawTextArray objectAtIndex:rs];
         NSUInteger ri = arc4random_uniform((u_int32_t)[rawImageArray count]);
         UIImage *i = [rawTextArray objectAtIndex:ri];
-        CollumnCollectionViewItem *item = [[CollumnCollectionViewItem alloc] initWithText:s image:i];
+        ColumnsCollectionViewItem *item = [[ColumnsCollectionViewItem alloc] initWithText:s image:i];
         [items addObject:item];
     }
 }

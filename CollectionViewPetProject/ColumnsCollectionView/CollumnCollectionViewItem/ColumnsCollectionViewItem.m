@@ -6,16 +6,16 @@
 //  Copyright © 2016 MPK. All rights reserved.
 //
 
-#import "CollumnCollectionViewItem.h"
+#import "ColumnsCollectionViewItem.h"
 
-@interface CollumnCollectionViewItem ()
+@interface ColumnsCollectionViewItem ()
 
 @property (strong, nonatomic) NSString *text;
 @property (strong, nonatomic) UIImage *image;
 
 @end
 
-@implementation CollumnCollectionViewItem
+@implementation ColumnsCollectionViewItem
 
 - (instancetype)initWithText:(NSString *)text image:(UIImage *)image {
     self = [super init];
