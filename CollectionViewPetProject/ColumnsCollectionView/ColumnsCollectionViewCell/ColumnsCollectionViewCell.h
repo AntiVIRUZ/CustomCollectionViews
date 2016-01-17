@@ -10,4 +10,6 @@
 
 @interface ColumnsCollectionViewCell : UICollectionViewCell
 
+- (void)setImage:(UIImage *)image andText:(NSString *)text;
+
 @end
