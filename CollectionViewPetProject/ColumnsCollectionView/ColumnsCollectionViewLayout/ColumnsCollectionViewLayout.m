@@ -84,7 +84,22 @@ const CGFloat kMinCellOffset = 8.0;
 
 - (NSArray *)indexPathsOfItemsInRect:(CGRect)rect {
     ColumnsCollectionViewDataSource *dataSource = self.collectionView.dataSource;
-    
+    NSInteger startSection = (NSInteger)(rect.origin.x / (self.colWidth + self.colXOffset));
+    NSInteger endSection = (NSInteger) ceil((rect.origin.x + rect.size.width) / (self.colWidth + self.colXOffset));
+    NSMutableArray *indexes = [NSMutableArray array];
+    for (NSInteger i = startSection; i <= endSection; i++) {
+        NSInteger j = 0;
+        while (true) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:j inSection:i];
+            ColumnsCollectionViewItem *item = [dataSource itemAtIndexPath:indexPath];
+            if (item.y + item.height < rect.origin.y + rect.size.height) {
+                [indexes addObject:indexPath];
+                j++;
+            } else {
+                break;
+            }
+        }
+    }
     return nil;
 }
 
