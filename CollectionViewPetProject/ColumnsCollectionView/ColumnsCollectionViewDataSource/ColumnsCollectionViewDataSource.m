@@ -12,7 +12,7 @@
 #import "ColumnsCollectionViewCell.h"
 
 const NSInteger kColumnCellOffset = 8;
-const NSInteger kItemsCount = 50;
+const NSInteger kItemsCount = 20;
 
 @interface ColumnsCollectionViewDataSource ()
 
@@ -51,9 +51,7 @@ const NSInteger kItemsCount = 50;
     }
     ColumnsCollectionViewItem *item = [self itemAtIndexPath:indexPath];
     if (item) {
-        [cell setImage:item.image andText:item.text];
-    } else {
-        [cell setImage:nil andText:@"Ошибка! Не найден item"];
+        cell.item = item;
     }
     return cell;
 }
@@ -86,7 +84,7 @@ const NSInteger kItemsCount = 50;
     }
     NSInteger min = 0;
     for (ColumnsCollectionViewItem *item in self.items) {
-        item.height = [self heightWithWidth:width image:item.image text:item.text];
+        [item configureWithWidth:width];
         
         item.y = [[offsets objectAtIndex:min] integerValue];
         CGFloat newOffset = [[offsets objectAtIndex:min] floatValue];
@@ -102,12 +100,11 @@ const NSInteger kItemsCount = 50;
         NSInteger newHeight = [[heights objectAtIndex:min] floatValue] + item.height + kColumnCellOffset;
         [heights setObject:[NSNumber numberWithFloat:newHeight] atIndexedSubscript:min];
         min = [self findMin:heights];
+        
+        if (self.totalHeight < item.y + item.height + kColumnCellOffset) {
+            self.totalHeight = item.y + item.height + kColumnCellOffset;
+        }
     }
-    CGFloat maxHeight = 0;
-    for (int i = 0; i < count; i++) {
-        maxHeight = MAX(maxHeight, [[offsets objectAtIndex:i] integerValue] + [[heights objectAtIndex:i] integerValue]);
-    }
-    self.totalHeight = maxHeight + kColumnCellOffset;
     self.indexPathsItems = [NSArray arrayWithArray:indexPathsItems];
 }
 
@@ -137,32 +134,20 @@ const NSInteger kItemsCount = 50;
     CGFloat generalHeight = kColumnCellOffset;
     for (ColumnsCollectionViewItem *item in self.items) {
         item.y = generalHeight;
-        item.height = [self heightWithWidth:width image:item.image text:item.text];
+        [item configureWithWidth:width];
         generalHeight += item.height + kColumnCellOffset;
         item.indexPath = [NSIndexPath indexPathForItem:i inSection:0];
         i++;
     }
 }
 
-- (CGFloat)heightWithWidth:(CGFloat)width image:(UIImage *)image text:(NSString *)text {
-    NSInteger contentWidth = width - kColumnCellOffset * 4;
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0] };
-    CGRect textSize = [text boundingRectWithSize:CGSizeMake(contentWidth, MAXFLOAT)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:attributes
-                                              context:nil];
-    CGFloat scaleFactor = contentWidth / image.size.width;
-    CGFloat imageHeight = image.size.height * scaleFactor;
-    return textSize.size.height + imageHeight + kColumnCellOffset * 3;
-}
-
 - (void)itemsInit {
     NSArray *rawTextArray =
     @[
-      @"Один молодой человек отправился со своей невестой на медовый месяц в Париж",
-      @"Она села рядом с женихом и пугающе серьезно спросила его, бросил ли он её, не будь она так красива. Молодой человек засмеялся, решив, что невеста просто показывает, как она хороша.",
-      @"Но та схватила тряпочку и вытерла свое лицо, стирая макияж, под которым оказалось множество безобразных пурпурных родинок. Разумеется, молодой человек не бросил бы её, но он имел неосторожность издать вздох, увидев эти родинки.Невеста заплакала и убежала, не вернувшись к тому времени, когда медовый месяц должен был закончиться",
-      @"У нее не было ни денег, ни паспорта, и испуганный молодой человек пошел в полицию. Там решили, что невеста просто передумала с браком, однако, она не умела говорить по-французски и у нее не было никаких документов, так что поиски начались. Но ничего не дали. Шли недели, месяцы, а молодой человек все никак не мог найти свою невесту. Его жизнь рухнула, ибо он был убит горем.Тогда он отправился бродить по миру, надеясь найти что-либо, способное смягчить его боль"
+      @"Тест",
+      @"Тестовая надпись, которая чуть больше",
+      @"Чуть большая надпись, мало ли, надо проверить",
+      @"Воошще огромное описание, на много строк, а то мало ли как поведет себя все это"
       ];
     UIImage *first = [UIImage imageNamed:@"wide"];
     UIImage *second = [UIImage imageNamed:@"tall"];

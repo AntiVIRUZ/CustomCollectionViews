@@ -100,13 +100,12 @@ const CGFloat kMinCellOffset = 8.0;
     NSInteger endSection = MIN((NSInteger)ceil((rect.origin.x + rect.size.width - self.colXOffset) / (self.colWidth + self.colXOffset)), self.colCount - 1);
     NSMutableArray *indexes = [NSMutableArray array];
     for (NSInteger i = startSection; i <= endSection; i++) {
-        NSInteger j = 0;
-        while (true) {
+        NSInteger itemsCount = [dataSource collectionView:self.collectionView numberOfItemsInSection:i];
+        for (NSInteger j = 0; j < itemsCount; j++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:j inSection:i];
             ColumnsCollectionViewItem *item = [dataSource itemAtIndexPath:indexPath];
             if (item.y < rect.origin.y + rect.size.height) {
                 [indexes addObject:indexPath];
-                j++;
             } else {
                 break;
             }

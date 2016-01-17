@@ -45,7 +45,7 @@
                                     <constraint firstItem="iFL-vP-ben" firstAttribute="top" secondItem="ZLv-3z-VEb" secondAttribute="top" constant="8" id="Ors-Ay-GM3"/>
                                     <constraint firstAttribute="trailing" secondItem="iFL-vP-ben" secondAttribute="trailing" constant="8" id="b03-US-aRH"/>
                                     <constraint firstAttribute="bottom" secondItem="tkY-rq-WgE" secondAttribute="bottom" constant="8" id="da2-LC-uPR"/>
-                                    <constraint firstItem="tkY-rq-WgE" firstAttribute="top" secondItem="iFL-vP-ben" secondAttribute="bottom" constant="8" id="td2-RJ-hVO"/>
+                                    <constraint firstItem="tkY-rq-WgE" firstAttribute="top" secondItem="iFL-vP-ben" secondAttribute="bottom" priority="999" constant="8" id="td2-RJ-hVO"/>
                                 </constraints>
                                 <size key="customSize" width="364" height="325"/>
                                 <connections>

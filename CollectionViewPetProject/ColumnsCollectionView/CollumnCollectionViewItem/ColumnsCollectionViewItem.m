@@ -8,6 +8,8 @@
 
 #import "ColumnsCollectionViewItem.h"
 
+const NSInteger kOffset = 8;
+
 @interface ColumnsCollectionViewItem ()
 
 @property (strong, nonatomic) NSString *text;
@@ -24,6 +26,18 @@
         self.image = image;
     }
     return self;
+}
+
+- (void)configureWithWidth:(CGFloat)width {
+    NSInteger contentWidth = width - kOffset * 4;
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0] };
+    CGRect textSize = [self.text boundingRectWithSize:CGSizeMake(contentWidth, MAXFLOAT)
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:attributes
+                                              context:nil];
+    CGFloat scaleFactor = contentWidth / self.image.size.width;
+    self.imageHeight = self.image.size.height * scaleFactor;
+    self.height = textSize.size.height + self.imageHeight + kOffset * 3;
 }
 
 @end

@@ -13,8 +13,11 @@
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) CGFloat height;
 @property (nonatomic) CGFloat y;
+@property (nonatomic) CGFloat imageHeight;
 
 - (instancetype)initWithText:(NSString *)text image:(UIImage *)image;
+
+- (void)configureWithWidth:(CGFloat)width;
 
 - (NSString *)text;
 - (UIImage *)image;

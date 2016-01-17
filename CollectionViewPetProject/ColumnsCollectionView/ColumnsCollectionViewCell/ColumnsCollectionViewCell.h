@@ -14,6 +14,4 @@
 
 @property (nonatomic, strong) ColumnsCollectionViewItem *item;
 
-- (void)setImage:(UIImage *)image andText:(NSString *)text;
-
 @end
