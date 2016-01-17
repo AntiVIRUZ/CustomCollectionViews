@@ -11,8 +11,8 @@
 #import "ColumnsCollectionViewCell.h"
 #import "ColumnsCollectionViewItem.h"
 
-const CGFloat kMinCellWidth = 160.0;
-const CGFloat kMaxCellWidth = 220.0;
+const CGFloat kMinCellWidth = 200.0;
+const CGFloat kMaxCellWidth = 300.0;
 const CGFloat kMinCellOffset = 8.0;
 
 @interface ColumnsCollectionViewLayout ()
@@ -31,7 +31,7 @@ const CGFloat kMinCellOffset = 8.0;
     //All calculations becomes from 'width = count * colWodth + (count + 1) * colOffset'
     CGFloat width = self.collectionView.bounds.size.width;
     self.colCount = (NSInteger)(width - kMinCellOffset) / (kMaxCellWidth + kMinCellOffset);
-    if ((width - self.colCount * kMinCellOffset) / (self.colCount - 1) > kMinCellWidth) {
+    if ((width - (self.colCount + 2) * kMinCellOffset) / (self.colCount + 1) > kMinCellWidth) {
         self.colCount++;
     }
     self.colWidth = (width - (self.colCount + 1) * kMinCellOffset) / self.colCount;
