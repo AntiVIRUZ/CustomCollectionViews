@@ -104,7 +104,8 @@ const CGFloat kMinCellOffset = 8.0;
 }
 
 - (CGFloat)calculateContentHeight {
-    return 100;
+    ColumnsCollectionViewDataSource *dataSource = self.collectionView.dataSource;
+    return [dataSource totalHeight];
 }
 
 @end

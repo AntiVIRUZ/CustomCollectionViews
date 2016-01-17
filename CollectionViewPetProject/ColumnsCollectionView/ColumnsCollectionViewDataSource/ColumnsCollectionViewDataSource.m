@@ -17,7 +17,9 @@ const NSInteger kItemsCount = 50;
 @interface ColumnsCollectionViewDataSource ()
 
 @property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSArray *indexPathsItems;
 @property (nonatomic) NSInteger sectionCount;
+@property (nonatomic) CGFloat totalHeight;
 
 @end
 
@@ -75,10 +77,12 @@ const NSInteger kItemsCount = 50;
     NSMutableArray *offsets = [NSMutableArray arrayWithCapacity:count];
     NSMutableArray *heights = [NSMutableArray arrayWithCapacity:count];
     NSMutableArray *counts = [NSMutableArray arrayWithCapacity:count];
+    NSMutableArray *indexPathsItems = [NSMutableArray arrayWithCapacity:count];
     for (int i = 0; i < count; i++) {
         [offsets addObject:[NSNumber numberWithFloat:kColumnCellOffset]];
         [heights addObject:[NSNumber numberWithFloat:0.0]];
         [counts addObject:[NSNumber numberWithInteger:0]];
+        [indexPathsItems addObject:[NSMutableArray array]];
     }
     NSInteger min = 0;
     for (ColumnsCollectionViewItem *item in self.items) {
@@ -93,19 +97,22 @@ const NSInteger kItemsCount = 50;
         item.indexPath = [NSIndexPath indexPathForItem:count inSection:min];
         [counts setObject:[NSNumber numberWithInteger:count + 1] atIndexedSubscript:min];
         
+        [[indexPathsItems objectAtIndex:min] addObject:item];
+        
         NSInteger newHeight = [[heights objectAtIndex:min] floatValue] + item.height + kColumnCellOffset;
         [heights setObject:[NSNumber numberWithFloat:newHeight] atIndexedSubscript:min];
         min = [self findMin:heights];
     }
+    CGFloat maxHeight = 0;
+    for (int i = 0; i < count; i++) {
+        maxHeight = MAX(maxHeight, [[offsets objectAtIndex:i] integerValue] + [[heights objectAtIndex:i] integerValue]);
+    }
+    self.totalHeight = maxHeight + kColumnCellOffset;
+    self.indexPathsItems = [NSArray arrayWithArray:indexPathsItems];
 }
 
 - (ColumnsCollectionViewItem *)itemAtIndexPath:(NSIndexPath *)indexPath {
-    for (ColumnsCollectionViewItem *item in self.items) {
-        if ([item.indexPath isEqual:indexPath]) {
-            return item;
-        }
-    }
-    return nil;
+    return [[self.indexPathsItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.item];
 }
 
 #pragma mark - Private
@@ -170,6 +177,7 @@ const NSInteger kItemsCount = 50;
         ColumnsCollectionViewItem *item = [[ColumnsCollectionViewItem alloc] initWithText:s image:i];
         [items addObject:item];
     }
+    self.items = [NSArray arrayWithArray:items];
 }
 
 @end

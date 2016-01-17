@@ -14,5 +14,6 @@
 
 - (void)configureItemsWithColumnsCount:(NSInteger)count columnWidth:(CGFloat)width;
 - (ColumnsCollectionViewItem *)itemAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)totalHeight;
 
 @end
