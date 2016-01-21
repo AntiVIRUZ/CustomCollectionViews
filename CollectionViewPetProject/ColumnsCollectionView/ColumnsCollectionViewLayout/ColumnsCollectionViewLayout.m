@@ -11,7 +11,7 @@
 #import "ColumnsCollectionViewCell.h"
 #import "ColumnsCollectionViewItem.h"
 
-const CGFloat kMinCellWidth = 200.0;
+const CGFloat kMinCellWidth = 150.0;
 const CGFloat kMaxCellWidth = 300.0;
 const CGFloat kMinCellOffset = 8.0;
 
