@@ -6,18 +6,18 @@
 //  Copyright © 2016 MPK. All rights reserved.
 //
 
-#import "ColumnsCollectionViewItem.h"
+#import "CollectionViewItem.h"
 
 const NSInteger kOffset = 8;
 
-@interface ColumnsCollectionViewItem ()
+@interface CollectionViewItem ()
 
 @property (strong, nonatomic) NSString *text;
 @property (strong, nonatomic) UIImage *image;
 
 @end
 
-@implementation ColumnsCollectionViewItem
+@implementation CollectionViewItem
 
 - (instancetype)initWithText:(NSString *)text image:(UIImage *)image {
     self = [super init];

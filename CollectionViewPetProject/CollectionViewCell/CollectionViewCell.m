@@ -6,10 +6,10 @@
 //  Copyright © 2016 MPK. All rights reserved.
 //
 
-#import "ColumnsCollectionViewCell.h"
-#import "ColumnsCollectionViewItem.h"
+#import "CollectionViewCell.h"
+#import "CollectionViewItem.h"
 
-@interface ColumnsCollectionViewCell ()
+@interface CollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -18,9 +18,9 @@
 
 @end
 
-@implementation ColumnsCollectionViewCell
+@implementation CollectionViewCell
 
-- (void)setItem:(ColumnsCollectionViewItem *)item {
+- (void)setItem:(CollectionViewItem *)item {
     _item = item;
     self.image.image = item.image;
     self.label.text = item.text;

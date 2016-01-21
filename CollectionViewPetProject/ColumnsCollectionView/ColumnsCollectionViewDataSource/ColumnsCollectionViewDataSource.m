@@ -8,8 +8,8 @@
 
 #import "ColumnsCollectionViewDataSource.h"
 
-#import "ColumnsCollectionViewItem.h"
-#import "ColumnsCollectionViewCell.h"
+#import "CollectionViewItem.h"
+#import "CollectionViewCell.h"
 
 const NSInteger kColumnCellOffset = 8;
 const NSInteger kItemsCount = 20;
@@ -45,11 +45,11 @@ const NSInteger kItemsCount = 20;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ColumnsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"colCell" forIndexPath:indexPath];
+    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"colCell" forIndexPath:indexPath];
     if (!cell) {
-        cell = [[ColumnsCollectionViewCell alloc] init];
+        cell = [[CollectionViewCell alloc] init];
     }
-    ColumnsCollectionViewItem *item = [self itemAtIndexPath:indexPath];
+    CollectionViewItem *item = [self itemAtIndexPath:indexPath];
     if (item) {
         cell.item = item;
     }
@@ -83,7 +83,7 @@ const NSInteger kItemsCount = 20;
         [indexPathsItems addObject:[NSMutableArray array]];
     }
     NSInteger min = 0;
-    for (ColumnsCollectionViewItem *item in self.items) {
+    for (CollectionViewItem *item in self.items) {
         [item configureWithWidth:width];
         
         item.y = [[offsets objectAtIndex:min] integerValue];
@@ -108,7 +108,7 @@ const NSInteger kItemsCount = 20;
     self.indexPathsItems = [NSArray arrayWithArray:indexPathsItems];
 }
 
-- (ColumnsCollectionViewItem *)itemAtIndexPath:(NSIndexPath *)indexPath {
+- (CollectionViewItem *)itemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < self.sectionCount) {
         return [[self.indexPathsItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.item];
     }
@@ -132,7 +132,7 @@ const NSInteger kItemsCount = 20;
 - (void)configureItemsForSingleColumnWithWidth:(CGFloat)width {
     int i = 0;
     CGFloat generalHeight = kColumnCellOffset;
-    for (ColumnsCollectionViewItem *item in self.items) {
+    for (CollectionViewItem *item in self.items) {
         item.y = generalHeight;
         [item configureWithWidth:width];
         generalHeight += item.height + kColumnCellOffset;
@@ -160,7 +160,7 @@ const NSInteger kItemsCount = 20;
         NSString *s = [rawTextArray objectAtIndex:rs];
         NSUInteger ri = arc4random_uniform((u_int32_t)[rawImageArray count]);
         UIImage *i = [rawImageArray objectAtIndex:ri];
-        ColumnsCollectionViewItem *item = [[ColumnsCollectionViewItem alloc] initWithText:s image:i];
+        CollectionViewItem *item = [[CollectionViewItem alloc] initWithText:s image:i];
         [items addObject:item];
     }
     self.items = [NSArray arrayWithArray:items];

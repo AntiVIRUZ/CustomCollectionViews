@@ -15,7 +15,7 @@
                         <animations/>
                         <collectionViewLayout key="collectionViewLayout" id="b2T-wI-kPu" customClass="ColumnsCollectionViewLayout"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colCell" id="ZLv-3z-VEb" customClass="ColumnsCollectionViewCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colCell" id="ZLv-3z-VEb" customClass="CollectionViewCell">
                                 <rect key="frame" x="118" y="0.0" width="364" height="325"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

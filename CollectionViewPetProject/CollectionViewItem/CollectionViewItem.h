@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ColumnsCollectionViewItem : NSObject
+@interface CollectionViewItem : NSObject
 
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) CGFloat height;
