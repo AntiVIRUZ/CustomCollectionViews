@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF3541BD1C537F5F00DB8D52 /* TabsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3541BC1C537F5F00DB8D52 /* TabsCollectionViewLayout.m */; };
+		FF3541C01C537FAE00DB8D52 /* TabsCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3541BF1C537FAE00DB8D52 /* TabsCollectionViewDataSource.m */; };
 		FF98BBAF1C4A66B700E237D8 /* CollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98BBAE1C4A66B700E237D8 /* CollectionViewItem.m */; };
 		FFFD94A71C47EF45009EDFBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94A61C47EF45009EDFBB /* main.m */; };
 		FFFD94AA1C47EF45009EDFBB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94A91C47EF45009EDFBB /* AppDelegate.m */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF3541BE1C537FAE00DB8D52 /* TabsCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabsCollectionViewDataSource.h; sourceTree = "<group>"; };
+		FF3541BF1C537FAE00DB8D52 /* TabsCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabsCollectionViewDataSource.m; sourceTree = "<group>"; };
 		FF98BBAD1C4A66B700E237D8 /* CollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewItem.h; sourceTree = "<group>"; };
 		FF98BBAE1C4A66B700E237D8 /* CollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewItem.m; sourceTree = "<group>"; };
 		FFFD94A21C47EF45009EDFBB /* CollectionViewPetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewPetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,8 +68,10 @@
 		FF72DB541C5113C3009B8F14 /* TabsCollectionViewDataSource */ = {
 			isa = PBXGroup;
 			children = (
+				FF3541BE1C537FAE00DB8D52 /* TabsCollectionViewDataSource.h */,
+				FF3541BF1C537FAE00DB8D52 /* TabsCollectionViewDataSource.m */,
 			);
-			name = TabsCollectionViewDataSource;
+			path = TabsCollectionViewDataSource;
 			sourceTree = "<group>";
 		};
 		FF98BBAC1C4A669300E237D8 /* CollectionViewItem */ = {
@@ -254,6 +260,7 @@
 				FFFD94AD1C47EF45009EDFBB /* FirstViewController.m in Sources */,
 				FF98BBAF1C4A66B700E237D8 /* CollectionViewItem.m in Sources */,
 				FFFD94A71C47EF45009EDFBB /* main.m in Sources */,
+				FF3541C01C537FAE00DB8D52 /* TabsCollectionViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
