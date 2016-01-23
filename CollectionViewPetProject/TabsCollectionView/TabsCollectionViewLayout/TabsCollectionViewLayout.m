@@ -14,6 +14,7 @@ const NSInteger kTabCellOffset = 8;
 
 @property (nonatomic) CGFloat itemsHeight;
 @property (nonatomic) CGFloat itemsWidth;
+@property (nonatomic) NSInteger itemsCount;
 
 @end
 
@@ -24,6 +25,7 @@ const NSInteger kTabCellOffset = 8;
 - (void)prepareLayout {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        self.itemsCount = [self.collectionView.dataSource collectionView:self.collectionView numberOfItemsInSection:0];
         self.itemsHeight = self.collectionView.bounds.size.height - kTabCellOffset * 2;
         self.itemsWidth = self.collectionView.bounds.size.width - kTabCellOffset * 2;
     });
@@ -50,9 +52,9 @@ const NSInteger kTabCellOffset = 8;
     UICollectionViewLayoutAttributes *lowerAttributes =
         [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:lowerItem inSection:0]];
     [layoutAttributes addObject:lowerAttributes];
-    if (higherItem < [self.collectionView.dataSource collectionView:self.collectionView numberOfItemsInSection:0]) {
+    if (higherItem < self.itemsCount) {
         UICollectionViewLayoutAttributes *higherAttributes =
-            [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:higherItem inSection:0]];;
+            [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:higherItem inSection:0]];
         [layoutAttributes addObject:higherAttributes];
     }
     
@@ -65,11 +67,14 @@ const NSInteger kTabCellOffset = 8;
     NSInteger lowerItem = (NSInteger)(self.collectionView.contentOffset.y / (self.itemsHeight + kTabCellOffset));
     CGFloat y;
     if (indexPath.row == lowerItem ) {
-        y = self.collectionView.contentOffset.y + kTabCellOffset;
+        y = 2 * self.collectionView.contentOffset.y - (int)(self.collectionView.contentOffset.y / self.itemsHeight) * self.itemsHeight + kTabCellOffset;
+        NSLog(@"Lower indexPath = %@, y = %f", indexPath, y);
     } else {
-        y = 2 * self.collectionView.contentOffset.y + fabs(self.collectionView.contentOffset.y / self.itemsHeight) * self.itemsHeight + kTabCellOffset;
+        y = self.collectionView.contentOffset.y + kTabCellOffset;
+        NSLog(@"Higher indexPath = %@, y = %f", indexPath, y);
     }
     attributes.frame = CGRectMake(kTabCellOffset, y, self.itemsWidth, self.itemsHeight);
+    attributes.zIndex = self.itemsCount - indexPath.row;
     return attributes;
 }
 

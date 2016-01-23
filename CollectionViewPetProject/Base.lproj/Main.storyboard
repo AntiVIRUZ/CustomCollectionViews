@@ -88,55 +88,66 @@
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="JAC-bg-ge9">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qa7-fo-dJv"/>
+                        <viewControllerLayoutGuide type="bottom" id="fya-7f-6cF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6qx-Lx-XW6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <animations/>
-                        <collectionViewLayout key="collectionViewLayout" id="RRA-MO-BCU" customClass="TabsCollectionViewLayout"/>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colCell" id="BOo-9Q-tob" customClass="CollectionViewCell">
-                                <rect key="frame" x="118" y="0.0" width="364" height="325"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="364" height="325"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tXU-7x-ZrL">
-                                            <rect key="frame" x="8" y="8" width="348" height="280.5"/>
-                                            <animations/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDH-sZ-sxM">
-                                            <rect key="frame" x="8" y="296.5" width="348" height="20.5"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <animations/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hRx-UF-AR2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="oDH-sZ-sxM" firstAttribute="top" secondItem="tXU-7x-ZrL" secondAttribute="bottom" priority="900" constant="8" id="0gf-Lw-2Ce"/>
-                                    <constraint firstAttribute="trailing" secondItem="oDH-sZ-sxM" secondAttribute="trailing" constant="8" id="5Qc-LJ-Zbb"/>
-                                    <constraint firstAttribute="bottom" secondItem="oDH-sZ-sxM" secondAttribute="bottom" constant="8" id="7cd-0L-KS4"/>
-                                    <constraint firstItem="tXU-7x-ZrL" firstAttribute="top" secondItem="BOo-9Q-tob" secondAttribute="top" constant="8" id="BXf-u3-3Ah"/>
-                                    <constraint firstItem="tXU-7x-ZrL" firstAttribute="leading" secondItem="BOo-9Q-tob" secondAttribute="leading" constant="8" id="KAR-rP-lDy"/>
-                                    <constraint firstItem="oDH-sZ-sxM" firstAttribute="leading" secondItem="BOo-9Q-tob" secondAttribute="leading" constant="8" id="dDV-Ce-SzG"/>
-                                    <constraint firstAttribute="trailing" secondItem="tXU-7x-ZrL" secondAttribute="trailing" constant="8" id="qdz-oe-qjW"/>
-                                </constraints>
-                                <size key="customSize" width="364" height="325"/>
-                                <connections>
-                                    <outlet property="image" destination="tXU-7x-ZrL" id="Kes-SI-Jvm"/>
-                                    <outlet property="label" destination="oDH-sZ-sxM" id="f9Y-N6-Kkj"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                    </collectionView>
+                                <collectionViewLayout key="collectionViewLayout" id="06Q-Cp-doZ" customClass="TabsCollectionViewLayout"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colCell" id="CKH-md-L9j" customClass="CollectionViewCell">
+                                        <rect key="frame" x="118" y="0.0" width="364" height="325"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="364" height="325"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TWP-rL-lSN">
+                                                    <rect key="frame" x="8" y="8" width="348" height="280.5"/>
+                                                    <animations/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou4-oY-8wk">
+                                                    <rect key="frame" x="8" y="296.5" width="348" height="20.5"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="TWP-rL-lSN" firstAttribute="leading" secondItem="CKH-md-L9j" secondAttribute="leading" constant="8" id="Cau-iz-Xcx"/>
+                                            <constraint firstAttribute="trailing" secondItem="TWP-rL-lSN" secondAttribute="trailing" constant="8" id="K01-U3-C43"/>
+                                            <constraint firstItem="Ou4-oY-8wk" firstAttribute="leading" secondItem="CKH-md-L9j" secondAttribute="leading" constant="8" id="WV1-0I-twv"/>
+                                            <constraint firstItem="Ou4-oY-8wk" firstAttribute="top" secondItem="TWP-rL-lSN" secondAttribute="bottom" priority="999" constant="8" id="XHJ-53-wjL"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ou4-oY-8wk" secondAttribute="trailing" constant="8" id="lmN-Kx-SOp"/>
+                                            <constraint firstItem="TWP-rL-lSN" firstAttribute="top" secondItem="CKH-md-L9j" secondAttribute="top" constant="8" id="oCH-KJ-0ud"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ou4-oY-8wk" secondAttribute="bottom" constant="8" id="x3A-X0-UVH"/>
+                                        </constraints>
+                                        <size key="customSize" width="364" height="325"/>
+                                        <connections>
+                                            <outlet property="image" destination="TWP-rL-lSN" id="zY6-re-vMR"/>
+                                            <outlet property="label" destination="Ou4-oY-8wk" id="wp6-CT-jxt"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="collectionView" destination="JAC-bg-ge9" id="cMe-FE-pM1"/>
+                        <outlet property="collectionView" destination="hRx-UF-AR2" id="V5w-50-dVR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
