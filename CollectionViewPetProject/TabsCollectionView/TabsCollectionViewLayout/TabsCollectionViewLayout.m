@@ -38,8 +38,7 @@ const NSInteger kTabCellOffset = 8;
 {
     // Don't scroll horizontally
     CGFloat contentWidth = self.collectionView.bounds.size.width;
-    
-    // Make +200 becouse we need space to scroll on the top and bottom of scroll view
+ 
     CGFloat contentHeight = (self.itemsHeight + kTabCellOffset) * [self.collectionView.dataSource collectionView:self.collectionView numberOfItemsInSection:0] + kTabCellOffset;
     
     CGSize contentSize = CGSizeMake(contentWidth, contentHeight);
@@ -70,7 +69,7 @@ const NSInteger kTabCellOffset = 8;
     NSInteger lowerItem = (NSInteger)(self.collectionView.contentOffset.y / (self.itemsHeight + kTabCellOffset));
     CGFloat y;
     if (indexPath.row == lowerItem ) {
-        y = 2 * self.collectionView.contentOffset.y - (int)(self.collectionView.contentOffset.y / self.itemsHeight) * self.itemsHeight + kTabCellOffset;
+        y = 2 * self.collectionView.contentOffset.y - lowerItem * (self.itemsHeight + kTabCellOffset) + kTabCellOffset;
         NSLog(@"Lower indexPath = %@, y = %f", indexPath, y);
     } else {
         y = self.collectionView.contentOffset.y + kTabCellOffset;
