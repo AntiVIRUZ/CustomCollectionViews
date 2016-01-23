@@ -8,6 +8,8 @@
 
 #import "TabsCollectionViewLayout.h"
 
+#import "TabsCollectionViewDataSource.h"
+
 const NSInteger kTabCellOffset = 8;
 
 @interface TabsCollectionViewLayout ()
@@ -28,6 +30,7 @@ const NSInteger kTabCellOffset = 8;
         self.itemsCount = [self.collectionView.dataSource collectionView:self.collectionView numberOfItemsInSection:0];
         self.itemsHeight = self.collectionView.bounds.size.height - kTabCellOffset * 2;
         self.itemsWidth = self.collectionView.bounds.size.width - kTabCellOffset * 2;
+        [(TabsCollectionViewDataSource *)self.collectionView.dataSource configureWithWidth:self.itemsWidth];
     });
 }
 

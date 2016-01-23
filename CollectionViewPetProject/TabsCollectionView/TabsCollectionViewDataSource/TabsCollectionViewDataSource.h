@@ -10,4 +10,6 @@
 
 @interface TabsCollectionViewDataSource : NSObject <UICollectionViewDataSource>
 
+- (void)configureWithWidth:(CGFloat)width;
+
 @end

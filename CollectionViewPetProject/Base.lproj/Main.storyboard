@@ -96,7 +96,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hRx-UF-AR2">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hRx-UF-AR2">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <animations/>
                                 <collectionViewLayout key="collectionViewLayout" id="06Q-Cp-doZ" customClass="TabsCollectionViewLayout"/>
@@ -144,6 +144,12 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hRx-UF-AR2" firstAttribute="top" secondItem="6qx-Lx-XW6" secondAttribute="top" id="4An-VL-3bI"/>
+                            <constraint firstAttribute="trailing" secondItem="hRx-UF-AR2" secondAttribute="trailing" id="GGY-0Y-Nv5"/>
+                            <constraint firstItem="fya-7f-6cF" firstAttribute="top" secondItem="hRx-UF-AR2" secondAttribute="bottom" id="Q1H-ug-mhM"/>
+                            <constraint firstItem="hRx-UF-AR2" firstAttribute="leading" secondItem="6qx-Lx-XW6" secondAttribute="leading" id="wjf-AU-THV"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>

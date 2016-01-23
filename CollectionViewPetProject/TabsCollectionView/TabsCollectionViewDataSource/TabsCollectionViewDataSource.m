@@ -24,15 +24,21 @@ const NSInteger kTabItemsCount = 10;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        NSMutableArray<CollectionViewItem *> *arr = [NSMutableArray array];
-        for (int i = 0; i < 10; i++) {
-            NSString *text = [NSString stringWithFormat:@"i = %d", i];
-            CollectionViewItem *item = [[CollectionViewItem alloc] initWithText:text image:nil];
-            [arr addObject:item];
-        }
-        _items = arr;//[CollectionViewItem generateItemsWithCount:kTabItemsCount];
+//        NSMutableArray<CollectionViewItem *> *arr = [NSMutableArray array];
+//        for (int i = 0; i < 10; i++) {
+//            NSString *text = [NSString stringWithFormat:@"i = %d", i];
+//            CollectionViewItem *item = [[CollectionViewItem alloc] initWithText:text image:nil];
+//            [arr addObject:item];
+//        }
+        _items = [CollectionViewItem generateItemsWithCount:kTabItemsCount];
     }
     return self;
+}
+
+- (void)configureWithWidth:(CGFloat)width {
+    for (CollectionViewItem *item in self.items) {
+        [item configureWithWidth:width];
+    }
 }
 
 #pragma mark - Collection View Data Sourse
@@ -53,9 +59,6 @@ const NSInteger kTabItemsCount = 10;
     CollectionViewItem *item = [self.items objectAtIndex:indexPath.row];
     if (item) {
         cell.item = item;
-    }
-    if (indexPath.row % 2 == 0) {
-        cell.backgroundColor = [UIColor lightGrayColor];
     }
     return cell;
 }
