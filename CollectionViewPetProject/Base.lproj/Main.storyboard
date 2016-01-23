@@ -92,7 +92,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <animations/>
-                        <collectionViewLayout key="collectionViewLayout" id="RRA-MO-BCU"/>
+                        <collectionViewLayout key="collectionViewLayout" id="RRA-MO-BCU" customClass="TabsCollectionViewLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colCell" id="BOo-9Q-tob" customClass="CollectionViewCell">
                                 <rect key="frame" x="118" y="0.0" width="364" height="325"/>
@@ -118,7 +118,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="oDH-sZ-sxM" firstAttribute="top" secondItem="tXU-7x-ZrL" secondAttribute="bottom" priority="999" constant="8" id="0gf-Lw-2Ce"/>
+                                    <constraint firstItem="oDH-sZ-sxM" firstAttribute="top" secondItem="tXU-7x-ZrL" secondAttribute="bottom" priority="900" constant="8" id="0gf-Lw-2Ce"/>
                                     <constraint firstAttribute="trailing" secondItem="oDH-sZ-sxM" secondAttribute="trailing" constant="8" id="5Qc-LJ-Zbb"/>
                                     <constraint firstAttribute="bottom" secondItem="oDH-sZ-sxM" secondAttribute="bottom" constant="8" id="7cd-0L-KS4"/>
                                     <constraint firstItem="tXU-7x-ZrL" firstAttribute="top" secondItem="BOo-9Q-tob" secondAttribute="top" constant="8" id="BXf-u3-3Ah"/>
@@ -135,6 +135,9 @@
                         </cells>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="collectionView" destination="JAC-bg-ge9" id="cMe-FE-pM1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>

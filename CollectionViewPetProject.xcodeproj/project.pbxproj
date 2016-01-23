@@ -23,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF3541BB1C537F5F00DB8D52 /* TabsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabsCollectionViewLayout.h; sourceTree = "<group>"; };
+		FF3541BC1C537F5F00DB8D52 /* TabsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabsCollectionViewLayout.m; sourceTree = "<group>"; };
 		FF3541BE1C537FAE00DB8D52 /* TabsCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabsCollectionViewDataSource.h; sourceTree = "<group>"; };
 		FF3541BF1C537FAE00DB8D52 /* TabsCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabsCollectionViewDataSource.m; sourceTree = "<group>"; };
 		FF98BBAD1C4A66B700E237D8 /* CollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewItem.h; sourceTree = "<group>"; };
@@ -61,6 +63,8 @@
 		FF72DB501C5112F7009B8F14 /* TabsCollectionViewLayout */ = {
 			isa = PBXGroup;
 			children = (
+				FF3541BB1C537F5F00DB8D52 /* TabsCollectionViewLayout.h */,
+				FF3541BC1C537F5F00DB8D52 /* TabsCollectionViewLayout.m */,
 			);
 			path = TabsCollectionViewLayout;
 			sourceTree = "<group>";
@@ -259,6 +263,7 @@
 				FFFD94AA1C47EF45009EDFBB /* AppDelegate.m in Sources */,
 				FFFD94AD1C47EF45009EDFBB /* FirstViewController.m in Sources */,
 				FF98BBAF1C4A66B700E237D8 /* CollectionViewItem.m in Sources */,
+				FF3541BD1C537F5F00DB8D52 /* TabsCollectionViewLayout.m in Sources */,
 				FFFD94A71C47EF45009EDFBB /* main.m in Sources */,
 				FF3541C01C537FAE00DB8D52 /* TabsCollectionViewDataSource.m in Sources */,
 			);
