@@ -22,4 +22,6 @@
 - (NSString *)text;
 - (UIImage *)image;
 
++ (NSArray *)generateItemsWithCount:(NSInteger)count;
+
 @end

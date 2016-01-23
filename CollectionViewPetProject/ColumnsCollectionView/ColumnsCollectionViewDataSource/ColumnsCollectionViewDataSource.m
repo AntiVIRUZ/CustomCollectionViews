@@ -142,28 +142,7 @@ const NSInteger kItemsCount = 20;
 }
 
 - (void)itemsInit {
-    NSArray *rawTextArray =
-    @[
-      @"Тест",
-      @"Тестовая надпись, которая чуть больше",
-      @"Чуть большая надпись, мало ли, надо проверить",
-      @"Воошще огромное описание, на много строк, а то мало ли как поведет себя все это"
-      ];
-    UIImage *first = [UIImage imageNamed:@"wide"];
-    UIImage *second = [UIImage imageNamed:@"tall"];
-    UIImage *third = [UIImage imageNamed:@"square"];
-    
-    NSArray *rawImageArray = @[first, second, third];
-    NSMutableArray *items = [NSMutableArray array];
-    for (int i = 0; i < kItemsCount; i++) {
-        NSUInteger rs = arc4random_uniform((u_int32_t)[rawTextArray count]);
-        NSString *s = [rawTextArray objectAtIndex:rs];
-        NSUInteger ri = arc4random_uniform((u_int32_t)[rawImageArray count]);
-        UIImage *i = [rawImageArray objectAtIndex:ri];
-        CollectionViewItem *item = [[CollectionViewItem alloc] initWithText:s image:i];
-        [items addObject:item];
-    }
-    self.items = [NSArray arrayWithArray:items];
+    self.items = [CollectionViewItem generateItemsWithCount:kItemsCount];;
 }
 
 @end
