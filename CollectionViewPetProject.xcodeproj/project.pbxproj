@@ -12,6 +12,7 @@
 		FF98BBAF1C4A66B700E237D8 /* CollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98BBAE1C4A66B700E237D8 /* CollectionViewItem.m */; };
 		FFB6A7001C5623D4002FC2F7 /* GalleryCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6A6FF1C5623D4002FC2F7 /* GalleryCollectionViewDataSource.m */; };
 		FFB6A7031C562499002FC2F7 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6A7021C562499002FC2F7 /* GalleryViewController.m */; };
+		FFB6A7061C5626AC002FC2F7 /* GalleryCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6A7051C5626AC002FC2F7 /* GalleryCollectionViewLayout.m */; };
 		FFFD94A71C47EF45009EDFBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94A61C47EF45009EDFBB /* main.m */; };
 		FFFD94AA1C47EF45009EDFBB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94A91C47EF45009EDFBB /* AppDelegate.m */; };
 		FFFD94AD1C47EF45009EDFBB /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFD94AC1C47EF45009EDFBB /* FirstViewController.m */; };
@@ -35,6 +36,8 @@
 		FFB6A6FF1C5623D4002FC2F7 /* GalleryCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryCollectionViewDataSource.m; sourceTree = "<group>"; };
 		FFB6A7011C562499002FC2F7 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		FFB6A7021C562499002FC2F7 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
+		FFB6A7041C5626AC002FC2F7 /* GalleryCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryCollectionViewLayout.h; sourceTree = "<group>"; };
+		FFB6A7051C5626AC002FC2F7 /* GalleryCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryCollectionViewLayout.m; sourceTree = "<group>"; };
 		FFFD94A21C47EF45009EDFBB /* CollectionViewPetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewPetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFD94A61C47EF45009EDFBB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFFD94A81C47EF45009EDFBB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,8 +108,10 @@
 		FFB6A6FD1C562394002FC2F7 /* GalleryCollectionViewLayout */ = {
 			isa = PBXGroup;
 			children = (
+				FFB6A7041C5626AC002FC2F7 /* GalleryCollectionViewLayout.h */,
+				FFB6A7051C5626AC002FC2F7 /* GalleryCollectionViewLayout.m */,
 			);
-			name = GalleryCollectionViewLayout;
+			path = GalleryCollectionViewLayout;
 			sourceTree = "<group>";
 		};
 		FFFD94991C47EF45009EDFBB = {
@@ -287,6 +292,7 @@
 				FFFD94C91C48212C009EDFBB /* ColumnsCollectionViewDataSource.m in Sources */,
 				FFFD94C51C481465009EDFBB /* ColumnsCollectionViewLayout.m in Sources */,
 				FFFD94AA1C47EF45009EDFBB /* AppDelegate.m in Sources */,
+				FFB6A7061C5626AC002FC2F7 /* GalleryCollectionViewLayout.m in Sources */,
 				FFB6A7031C562499002FC2F7 /* GalleryViewController.m in Sources */,
 				FFB6A7001C5623D4002FC2F7 /* GalleryCollectionViewDataSource.m in Sources */,
 				FFFD94AD1C47EF45009EDFBB /* FirstViewController.m in Sources */,

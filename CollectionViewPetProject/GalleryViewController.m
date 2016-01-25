@@ -13,6 +13,7 @@
 @interface GalleryViewController ()
 
 @property (strong, nonatomic) GalleryCollectionViewDataSource *dataSource;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -21,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource = [[GalleryCollectionViewDataSource alloc] init];
+    self.collectionView.dataSource = self.dataSource;
 }
 
 @end
