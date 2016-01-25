@@ -31,6 +31,8 @@ const NSInteger kTabCellOffset = 8;
         self.itemsHeight = self.collectionView.bounds.size.height - kTabCellOffset * 2;
         self.itemsWidth = self.collectionView.bounds.size.width - kTabCellOffset * 2;
         [(TabsCollectionViewDataSource *)self.collectionView.dataSource configureWithWidth:self.itemsWidth];
+        CGFloat startContentOffset = (self.itemsHeight + kTabCellOffset) * [self.collectionView.dataSource collectionView:self.collectionView numberOfItemsInSection:0] - kTabCellOffset - self.itemsHeight;
+        self.collectionView.contentOffset = CGPointMake(0, startContentOffset);
     });
 }
 
@@ -39,7 +41,7 @@ const NSInteger kTabCellOffset = 8;
     // Don't scroll horizontally
     CGFloat contentWidth = self.collectionView.bounds.size.width;
  
-    CGFloat contentHeight = (self.itemsHeight + kTabCellOffset) * [self.collectionView.dataSource collectionView:self.collectionView numberOfItemsInSection:0] + kTabCellOffset;
+    CGFloat contentHeight = (self.itemsHeight + kTabCellOffset) * [self.collectionView.dataSource collectionView:self.collectionView numberOfItemsInSection:0];
     
     CGSize contentSize = CGSizeMake(contentWidth, contentHeight);
     return contentSize;
@@ -48,7 +50,7 @@ const NSInteger kTabCellOffset = 8;
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSMutableArray *layoutAttributes = [NSMutableArray array];
-    NSInteger lowerItem = (NSInteger)(self.collectionView.contentOffset.y / (self.itemsHeight + kTabCellOffset));
+    NSInteger lowerItem = [self lowerItem];
     NSInteger higherItem = lowerItem + 1;
     
     UICollectionViewLayoutAttributes *lowerAttributes =
@@ -66,11 +68,14 @@ const NSInteger kTabCellOffset = 8;
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewLayoutAttributes *attributes =
         [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    NSInteger lowerItem = (NSInteger)(self.collectionView.contentOffset.y / (self.itemsHeight + kTabCellOffset));
+    NSInteger lowerItem = [self lowerItem];
     CGFloat y;
     if (indexPath.row == lowerItem ) {
-        y = 2 * self.collectionView.contentOffset.y - lowerItem * (self.itemsHeight + kTabCellOffset) + kTabCellOffset;
-        NSLog(@"Lower indexPath = %@, y = %f", indexPath, y);
+        y = self.collectionViewContentSize.height - (lowerItem + 1) * (self.itemsHeight + kTabCellOffset) + kTabCellOffset;
+        //Some magic. First item is plased lower, than it needs to.
+        if (lowerItem == 0) {
+            y -= kTabCellOffset;
+        }
     } else {
         y = self.collectionView.contentOffset.y + kTabCellOffset;
         NSLog(@"Higher indexPath = %@, y = %f", indexPath, y);
@@ -82,6 +87,12 @@ const NSInteger kTabCellOffset = 8;
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
     return YES;
+}
+
+#pragma mark - Private
+
+- (NSInteger)lowerItem {
+    return (NSInteger)((self.collectionViewContentSize.height - self.collectionView.contentOffset.y) / (self.itemsHeight + kTabCellOffset)) - 1;
 }
 
 @end

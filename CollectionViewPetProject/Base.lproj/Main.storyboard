@@ -16,7 +16,7 @@
                         <collectionViewLayout key="collectionViewLayout" id="b2T-wI-kPu" customClass="ColumnsCollectionViewLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colCell" id="ZLv-3z-VEb" customClass="CollectionViewCell">
-                                <rect key="frame" x="118" y="0.0" width="364" height="325"/>
+                                <rect key="frame" x="118" y="20" width="364" height="325"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="364" height="325"/>
@@ -55,6 +55,7 @@
                             </collectionViewCell>
                         </cells>
                     </collectionView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="collectionView" destination="xto-fu-x9j" id="M7h-qe-A9E"/>
@@ -151,6 +152,7 @@
                             <constraint firstItem="hRx-UF-AR2" firstAttribute="leading" secondItem="6qx-Lx-XW6" secondAttribute="leading" id="wjf-AU-THV"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="collectionView" destination="hRx-UF-AR2" id="V5w-50-dVR"/>
