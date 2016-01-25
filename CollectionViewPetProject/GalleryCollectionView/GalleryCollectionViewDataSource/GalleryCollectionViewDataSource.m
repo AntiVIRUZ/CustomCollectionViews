@@ -1,30 +1,30 @@
 //
-//  TabsCollectionViewDataSource.m
+//  GalleryCollectionViewDataSource.m
 //  CollectionViewPetProject
 //
-//  Created by Vasiliy on 23.01.16.
+//  Created by Vasiliy on 25.01.16.
 //  Copyright © 2016 MPK. All rights reserved.
 //
 
-#import "TabsCollectionViewDataSource.h"
+#import "GalleryCollectionViewDataSource.h"
 
 #import "CollectionViewItem.h"
 #import "CollectionViewCell.h"
 
-const NSInteger kTabItemsCount = 10;
+const NSInteger kGalleryItemsCount = 10;
 
-@interface TabsCollectionViewDataSource ()
+@interface GalleryCollectionViewDataSource ()
 
 @property (nonatomic, strong) NSArray *items;
 
 @end
 
-@implementation TabsCollectionViewDataSource
+@implementation GalleryCollectionViewDataSource
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _items = [CollectionViewItem generateItemsWithCount:kTabItemsCount];
+        _items = [CollectionViewItem generateItemsWithCount:kGalleryItemsCount];
     }
     return self;
 }

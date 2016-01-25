@@ -78,7 +78,6 @@ const NSInteger kTabCellOffset = 8;
         }
     } else {
         y = self.collectionView.contentOffset.y + kTabCellOffset;
-        NSLog(@"Higher indexPath = %@, y = %f", indexPath, y);
     }
     attributes.frame = CGRectMake(kTabCellOffset, y, self.itemsWidth, self.itemsHeight);
     attributes.zIndex = self.itemsCount - indexPath.row;
