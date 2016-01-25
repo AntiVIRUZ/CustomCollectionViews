@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class ColumnsCollectionViewItem;
+@class CollectionViewItem;
 
-@interface ColumnsCollectionViewCell : UICollectionViewCell
+@interface CollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) ColumnsCollectionViewItem *item;
+@property (nonatomic, strong) CollectionViewItem *item;
 
 @end

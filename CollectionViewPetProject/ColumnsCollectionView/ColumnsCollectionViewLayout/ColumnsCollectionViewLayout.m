@@ -8,8 +8,8 @@
 
 #import "ColumnsCollectionViewLayout.h"
 #import "ColumnsCollectionViewDataSource.h"
-#import "ColumnsCollectionViewCell.h"
-#import "ColumnsCollectionViewItem.h"
+#import "CollectionViewCell.h"
+#import "CollectionViewItem.h"
 
 const CGFloat kMinCellWidth = 150.0;
 const CGFloat kMaxCellWidth = 300.0;
@@ -76,7 +76,7 @@ const CGFloat kMinCellOffset = 8.0;
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     ColumnsCollectionViewDataSource *dataSource = self.collectionView.dataSource;
-    ColumnsCollectionViewItem *item = [dataSource itemAtIndexPath:indexPath];
+    CollectionViewItem *item = [dataSource itemAtIndexPath:indexPath];
     UICollectionViewLayoutAttributes *attributes =
     [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     CGFloat x = (indexPath.section + 1) * self.colXOffset + indexPath.section * self.colWidth;
@@ -103,7 +103,7 @@ const CGFloat kMinCellOffset = 8.0;
         NSInteger itemsCount = [dataSource collectionView:self.collectionView numberOfItemsInSection:i];
         for (NSInteger j = 0; j < itemsCount; j++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:j inSection:i];
-            ColumnsCollectionViewItem *item = [dataSource itemAtIndexPath:indexPath];
+            CollectionViewItem *item = [dataSource itemAtIndexPath:indexPath];
             if (item.y < rect.origin.y + rect.size.height) {
                 [indexes addObject:indexPath];
             } else {

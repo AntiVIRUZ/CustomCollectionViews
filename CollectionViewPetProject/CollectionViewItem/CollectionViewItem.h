@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ColumnsCollectionViewItem : NSObject
+@interface CollectionViewItem : NSObject
 
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) CGFloat height;
@@ -21,5 +21,7 @@
 
 - (NSString *)text;
 - (UIImage *)image;
+
++ (NSArray *)generateItemsWithCount:(NSInteger)count;
 
 @end
