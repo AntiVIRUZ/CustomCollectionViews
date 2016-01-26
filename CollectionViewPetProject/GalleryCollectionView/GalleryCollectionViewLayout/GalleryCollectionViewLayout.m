@@ -10,21 +10,44 @@
 
 #import "GalleryCollectionViewDataSource.h"
 
+/**
+ *  Offset between cells and between screen's edge and cell
+ */
 const NSInteger kGalleryCellOffset = 16;
-const CGFloat kRadius = 300;
-//Content offset x * kAngleCoef = angle in radians
-const CGFloat kAngleCoef = 0.5 / kRadius;
-//Delta between cells in radians
-const CGFloat kCellAngleDelta = M_PI / 4;
-//Distance between cell's centers
-const CGFloat kCellSpacing = 2 * kRadius * kCellAngleDelta;
+/**
+ *  Number of cells in circle
+ */
+const NSInteger kGalleryCellsInCircle = 16;
+/**
+ *  Delta between cells in radians
+ */
+const CGFloat kCellAngleDelta = 2 * M_PI / kGalleryCellsInCircle;
+/**
+ *  How much cells from center should be shown
+ */
+const NSInteger kVisibleCellsCount = 2;
 
 @interface GalleryCollectionViewLayout ()
 
 @property (nonatomic) CGFloat itemsHeight;
 @property (nonatomic) CGFloat itemsWidth;
 @property (nonatomic) NSInteger itemsCount;
+/**
+ *  Real offset from top of screen
+ */
 @property (nonatomic) CGFloat cellTopOffset;
+/**
+ *  Radius of circle. Camera is placed in center of it
+ */
+@property (nonatomic) CGFloat radius;
+/**
+ *  Content offset x * angleCoef = angle in radians
+ */
+@property (nonatomic) CGFloat angleCoef;
+/**
+ *  Distance between cell's centers
+ */
+@property (nonatomic) CGFloat cellSpacing;
 
 @end
 
@@ -45,6 +68,10 @@ const CGFloat kCellSpacing = 2 * kRadius * kCellAngleDelta;
             self.cellTopOffset = kGalleryCellOffset;
         }
         [(GalleryCollectionViewDataSource *)self.collectionView.dataSource configureWithWidth:self.itemsWidth];
+        
+        self.radius = (self.itemsWidth + kGalleryCellOffset) * kGalleryCellsInCircle / (2 * M_PI);
+        self.angleCoef = 4 / (self.radius * kGalleryCellsInCircle);
+        self.cellSpacing = 2 * self.radius * kCellAngleDelta;
     });
 }
 
@@ -61,9 +88,9 @@ const CGFloat kCellSpacing = 2 * kRadius * kCellAngleDelta;
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSMutableArray *layoutAttributes = [NSMutableArray array];
-    NSInteger actualIndex = (NSInteger)(self.collectionView.contentOffset.x / kCellSpacing);
-    NSInteger start = MAX(0, actualIndex - 1);
-    NSInteger end = MIN([self.collectionView numberOfItemsInSection:0], actualIndex + 2);
+    NSInteger actualIndex = (NSInteger)(self.collectionView.contentOffset.x / self.cellSpacing);
+    NSInteger start = MAX(0, actualIndex - kVisibleCellsCount);
+    NSInteger end = MIN([self.collectionView numberOfItemsInSection:0], actualIndex + kVisibleCellsCount);
     for (NSInteger i = start; i <= end; i++) {
         UICollectionViewLayoutAttributes *attributes =
             [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -77,16 +104,18 @@ const CGFloat kCellSpacing = 2 * kRadius * kCellAngleDelta;
         [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
     attributes.frame = CGRectMake(kGalleryCellOffset, kGalleryCellOffset, self.itemsWidth, self.itemsHeight);
-    CATransform3D t = CATransform3DIdentity;
     //Add the perspective!
-    t.m34 = 1.0 / (-kRadius);
-    CGFloat zeroAngle = self.collectionView.contentOffset.x * kAngleCoef;
+    CGFloat zeroAngle = self.collectionView.contentOffset.x * self.angleCoef;
     CGFloat itemAngle = indexPath.row * kCellAngleDelta;
     CGFloat actualAngle = itemAngle - zeroAngle;
-    CGFloat x = kRadius * sin(actualAngle) + self.collectionView.bounds.size.width / 2 + self.collectionView.contentOffset.x;
-    CGFloat z = kRadius * cos(actualAngle);
-    CATransform3DTranslate(t, 0, 0, z);
+    CGFloat x = self.radius * sin(actualAngle) + self.collectionView.bounds.size.width / 2 + self.collectionView.contentOffset.x;
+    CGFloat z = self.radius * cos(actualAngle);
+    CATransform3D t = CATransform3DIdentity;
+    t.m34 = 1.0 / (-z);
+    NSLog(@"Actual angle = %f", actualAngle);
     t = CATransform3DRotate(t, -actualAngle, 0, 1, 0);
+    CGFloat scale = self.radius / z;
+    t = CATransform3DScale(t, scale, scale, scale);
     attributes.transform3D = t;
     attributes.center = CGPointMake(x, self.cellTopOffset);
     
